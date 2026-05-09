@@ -13,6 +13,8 @@ interface Profile {
   category: ArtistCategory | null;
   bio: string | null;
   avatar_url: string | null;
+  fee_paid?: boolean;
+  application_status?: string;
 }
 
 export default function Dashboard() {
@@ -40,6 +42,9 @@ export default function Dashboard() {
         } else if (!data) {
           setError("Your profile is still being prepared. Please sign out and sign in again.");
           toast.error("Profile not found. Please sign in again.");
+        } else if (!(data as Profile).fee_paid) {
+          navigate("/apply", { replace: true });
+          return;
         }
         setProfile(data as Profile | null);
         setLoading(false);

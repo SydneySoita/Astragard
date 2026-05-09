@@ -54,8 +54,8 @@ export default function HowItWorksBrands() {
 
       <section className="py-20 bg-astragard-dark border-t border-astragard-charcoal/10 text-center">
         <div className="container mx-auto px-4 flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/contact"><Button size="lg" className="gradient-bg text-primary-foreground font-ui">Submit a Brand Brief</Button></Link>
-          <Link to="/contact"><Button size="lg" variant="outline" className="border-astragard-charcoal/40 text-primary-foreground font-ui">Book a Discovery Call</Button></Link>
+          <Link to="/brands/submit"><Button size="lg" className="gradient-bg text-primary-foreground font-ui">Submit a Creative Challenge</Button></Link>
+          <Link to="/brands/dashboard"><Button size="lg" variant="outline" className="border-astragard-charcoal/40 text-primary-foreground font-ui">Brand Dashboard</Button></Link>
           <Link to="/incubator"><Button size="lg" variant="outline" className="border-secondary/40 text-secondary font-ui">Explore the Incubator</Button></Link>
         </div>
       </section>

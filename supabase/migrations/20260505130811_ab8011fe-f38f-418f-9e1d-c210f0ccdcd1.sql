@@ -1,0 +1,1 @@
+DROP POLICY IF EXISTS "Public read creative uploads" ON storage.objects;

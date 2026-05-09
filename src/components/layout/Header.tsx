@@ -10,10 +10,18 @@ const navItems = [
   { label: "Incubator", path: "/incubator" },
   { label: "Marketplace", path: "/marketplace" },
   {
-    label: "How It Works",
+    label: "For Brands",
     children: [
-      { label: "For Brands", path: "/how-it-works/brands" },
-      { label: "For Creatives", path: "/how-it-works/creatives" },
+      { label: "How It Works", path: "/how-it-works/brands" },
+      { label: "Submit a Challenge", path: "/brands/submit" },
+      { label: "Brand Dashboard", path: "/brands/dashboard" },
+    ],
+  },
+  {
+    label: "For Creatives",
+    children: [
+      { label: "How It Works", path: "/how-it-works/creatives" },
+      { label: "Apply to Astragard", path: "/apply" },
     ],
   },
   {
@@ -120,9 +128,9 @@ export function Header() {
           <Link to="/auth" className="hidden md:block text-sm text-primary-foreground/80 hover:text-secondary transition-colors font-ui">
             Sign in
           </Link>
-          <Link to="/dashboard" className="hidden md:block">
+          <Link to="/apply" className="hidden md:block">
             <Button className="gradient-bg text-primary-foreground font-ui text-sm hover:opacity-90 transition-opacity">
-              Enter Your World
+              Apply to Astragard
             </Button>
           </Link>
           <button

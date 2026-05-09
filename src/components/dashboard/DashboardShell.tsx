@@ -12,6 +12,9 @@ import {
   LifeBuoy,
   LogOut,
   Sparkles,
+  Store,
+  BadgeCheck,
+  MapPin,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -26,6 +29,7 @@ import { MessagesModule } from "./modules/MessagesModule";
 import { NotificationsModule } from "./modules/NotificationsModule";
 import { SupportModule } from "./modules/SupportModule";
 import { OverviewModule } from "./modules/OverviewModule";
+import { ListingsModule } from "./modules/ListingsModule";
 
 interface Profile {
   id: string;
@@ -33,6 +37,14 @@ interface Profile {
   category: ArtistCategory | null;
   bio: string | null;
   avatar_url: string | null;
+  professional_name?: string | null;
+  city?: string | null;
+  country?: string | null;
+  verified?: boolean;
+  authorship_mode?: string;
+  portfolio_url?: string | null;
+  website_url?: string | null;
+  social_links?: any;
 }
 
 interface Props {
@@ -46,6 +58,7 @@ const MODULES = [
   { id: "profile", label: "Profile", icon: User },
   { id: "projects", label: "Projects", icon: FolderKanban },
   { id: "portfolio", label: "Portfolio", icon: ImageIcon },
+  { id: "listings", label: "Creative Value", icon: Store },
   { id: "collaborations", label: "Collaborations", icon: Users },
   { id: "messages", label: "Messages", icon: MessageSquare },
   { id: "notifications", label: "Notifications", icon: Bell },
@@ -82,6 +95,8 @@ export function DashboardShell({ profile, onSignOut, onProfileUpdate }: Props) {
         return <ProjectsModule />;
       case "portfolio":
         return <PortfolioModule />;
+      case "listings":
+        return <ListingsModule />;
       case "collaborations":
         return <CollaborationsModule />;
       case "messages":
@@ -190,12 +205,26 @@ export function DashboardShell({ profile, onSignOut, onProfileUpdate }: Props) {
                   <span>{world!.themeName}</span>
                 </div>
                 <h1 className="font-heading text-3xl lg:text-5xl mb-4">
-                  Welcome back to your <span style={{ color: `hsl(${world!.accent})` }}>{greetingPlace}</span>,
-                  <br />
-                  <span className="gradient-text">{profile.display_name || "Creator"}</span>
+                  Welcome back,{" "}
+                  <span className="gradient-text">{profile.professional_name || profile.display_name || "Creator"}</span>
                 </h1>
-                <p className="font-body text-primary-foreground/70 max-w-2xl text-base lg:text-lg italic">
-                  This is your creative space within Astragard. {tagline}
+                <div className="flex items-center gap-3 flex-wrap text-sm text-primary-foreground/60 font-ui mb-4">
+                  <span>{world!.label}</span>
+                  {(profile.city || profile.country) && (
+                    <>
+                      <span className="text-primary-foreground/30">|</span>
+                      <span className="flex items-center gap-1"><MapPin className="h-3 w-3" />{[profile.city, profile.country].filter(Boolean).join(", ")}</span>
+                    </>
+                  )}
+                  <span className="text-primary-foreground/30">|</span>
+                  {profile.verified ? (
+                    <span className="flex items-center gap-1 text-secondary"><BadgeCheck className="h-4 w-4" /> Verified</span>
+                  ) : (
+                    <span className="text-primary-foreground/40">Verification pending</span>
+                  )}
+                </div>
+                <p className="font-body text-primary-foreground/70 max-w-2xl text-base italic">
+                  Welcome back to your <span style={{ color: `hsl(${world!.accent})` }}>{greetingPlace}</span>. {tagline}
                 </p>
               </header>
             )}
