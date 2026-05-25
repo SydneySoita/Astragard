@@ -54,7 +54,7 @@ export default function Index() {
             <span className="gradient-text">the World Deserves</span>
           </h1>
           <p className="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-primary-foreground/60 font-body animate-fade-up" style={{ animationDelay: "200ms" }}>
-            Astragard connects visionary brands with curated creative talent through structured collaboration, 
+            Aastragard connects visionary brands with curated creative talent through structured collaboration, 
             cultural integrity, and a framework built for lasting impact.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: "400ms" }}>
